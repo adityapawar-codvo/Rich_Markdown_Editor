@@ -1,0 +1,161 @@
+/* Document typography. One stylesheet for the editor canvas, the read-only view, the diff view and the export page,
+   so what is on screen is what is printed. Fonts are self-hosted (fonts.css). */
+.cx-root, .cx-print {
+  --cx-bg: #ffffff;
+  --cx-surface: #f7f8fa;
+  --cx-text: #1f2430;
+  --cx-muted: #6b7280;
+  --cx-border: #e3e6ec;
+  --cx-accent: #4f6bed;
+  --cx-accent-soft: rgba(79, 107, 237, 0.16);
+  --cx-accent-strong: rgba(79, 107, 237, 0.34);
+  --cx-danger: #c62828;
+  --cx-ok: #19734f;
+  --cx-code-bg: #f3f4f7;
+  --cx-add: rgba(25, 169, 121, 0.16);
+  --cx-del: rgba(207, 74, 108, 0.16);
+  --cx-ui-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cx-body-font: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --cx-mono-font: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+.cx-root.cx-dark {
+  --cx-bg: #16181f;
+  --cx-surface: #1d2029;
+  --cx-text: #e6e8ee;
+  --cx-muted: #98a1b3;
+  --cx-border: #343946;
+  --cx-accent: #7d93ff;
+  --cx-accent-soft: rgba(125, 147, 255, 0.2);
+  --cx-accent-strong: rgba(125, 147, 255, 0.4);
+  --cx-danger: #ff8a8a;
+  --cx-ok: #5fd3a2;
+  --cx-code-bg: #20232d;
+  --cx-add: rgba(60, 207, 156, 0.2);
+  --cx-del: rgba(239, 120, 148, 0.22);
+}
+
+.cx-doc {
+  font-family: var(--cx-body-font);
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--cx-text);
+  font-feature-settings: "kern", "liga";
+  overflow-wrap: anywhere;
+}
+.cx-doc > :first-child { margin-top: 0; }
+.cx-doc p { margin: 0 0 0.9em; }
+.cx-doc h1, .cx-doc h2, .cx-doc h3, .cx-doc h4 {
+  font-family: var(--cx-ui-font);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  margin: 1.5em 0 0.5em;
+  color: var(--cx-text);
+}
+.cx-doc h1 { font-size: 2.1rem; margin-top: 0.4em; letter-spacing: -0.02em; }
+.cx-doc h2 { font-size: 1.55rem; }
+.cx-doc h3 { font-size: 1.22rem; }
+.cx-doc h4 { font-size: 1.04rem; text-transform: none; color: var(--cx-muted); }
+.cx-doc a { color: var(--cx-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; cursor: pointer; }
+.cx-doc strong { font-weight: 650; }
+.cx-doc blockquote {
+  margin: 1.2em 0; padding: 0.1em 1.1em; border-left: 3px solid var(--cx-accent);
+  color: var(--cx-muted); font-style: italic;
+}
+.cx-doc blockquote p:last-child { margin-bottom: 0; }
+.cx-doc hr { border: 0; border-top: 1px solid var(--cx-border); margin: 2em 0; }
+.cx-doc ul, .cx-doc ol { margin: 0 0 0.9em; padding-left: 1.5em; }
+.cx-doc ul { list-style: disc outside; }
+.cx-doc ul ul { list-style: circle outside; }
+.cx-doc ul ul ul { list-style: square outside; }
+.cx-doc ol { list-style: decimal outside; }
+.cx-doc ol ol { list-style: lower-alpha outside; }
+.cx-doc ol ol ol { list-style: lower-roman outside; }
+.cx-doc li { display: list-item; }
+.cx-doc li > p { margin-bottom: 0.3em; }
+.cx-doc ul[data-type="taskList"] { list-style: none; padding-left: 0.2em; }
+.cx-doc ul[data-type="taskList"] ul[data-type="taskList"] { padding-left: 1.5em; }
+.cx-doc li[data-type="taskItem"] { display: flex; align-items: flex-start; gap: 0.6em; }
+.cx-doc li[data-type="taskItem"] > label { margin-top: 0.38em; user-select: none; }
+.cx-doc li[data-type="taskItem"] > div { flex: 1; min-width: 0; }
+.cx-doc li[data-type="taskItem"][data-checked="true"] > div { color: var(--cx-muted); text-decoration: line-through; }
+.cx-doc li[data-type="taskItem"] input { width: 1.05em; height: 1.05em; accent-color: var(--cx-accent); }
+.cx-doc code {
+  font-family: var(--cx-mono-font); font-size: 0.86em; background: var(--cx-code-bg);
+  padding: 0.12em 0.38em; border-radius: 5px;
+}
+.cx-doc pre {
+  font-family: var(--cx-mono-font); font-size: 0.86rem; line-height: 1.6; background: var(--cx-code-bg);
+  border: 1px solid var(--cx-border); border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 1.1em 0;
+}
+.cx-doc pre code { background: none; padding: 0; font-size: inherit; }
+.cx-doc mark { background: #fff59d; color: inherit; padding: 0.04em 0.15em; border-radius: 3px; }
+.cx-root.cx-dark .cx-doc mark { color: #16181f; }
+.cx-doc sub, .cx-doc sup { font-size: 0.72em; line-height: 0; }
+.cx-doc table {
+  border-collapse: collapse; width: 100%; margin: 1.2em 0; font-family: var(--cx-ui-font); font-size: 0.92rem;
+  table-layout: fixed; border-radius: 8px;
+}
+.cx-doc th, .cx-doc td { border: 1px solid var(--cx-border); padding: 8px 12px; vertical-align: top; text-align: left; position: relative; }
+.cx-doc th { background: var(--cx-surface); font-weight: 600; }
+.cx-doc td > p, .cx-doc th > p { margin: 0 0 0.3em; }
+.cx-doc td > p:last-child, .cx-doc th > p:last-child { margin-bottom: 0; }
+.cx-doc .selectedCell::after { content: ""; position: absolute; inset: 0; background: var(--cx-accent-soft); pointer-events: none; }
+
+/* syntax highlighting (lowlight / highlight.js classes) */
+.cx-doc .hljs-comment, .cx-doc .hljs-quote { color: #8a93a6; font-style: italic; }
+.cx-doc .hljs-keyword, .cx-doc .hljs-selector-tag, .cx-doc .hljs-literal, .cx-doc .hljs-built_in { color: #8250df; }
+.cx-doc .hljs-string, .cx-doc .hljs-title, .cx-doc .hljs-section, .cx-doc .hljs-attr, .cx-doc .hljs-template-variable { color: #0a7f5a; }
+.cx-doc .hljs-number, .cx-doc .hljs-symbol, .cx-doc .hljs-bullet, .cx-doc .hljs-variable { color: #b35900; }
+.cx-doc .hljs-type, .cx-doc .hljs-class .hljs-title, .cx-doc .hljs-name { color: #0b6bcb; }
+.cx-doc .hljs-meta, .cx-doc .hljs-function .hljs-title { color: #c2417f; }
+.cx-root.cx-dark .cx-doc .hljs-keyword, .cx-root.cx-dark .cx-doc .hljs-literal, .cx-root.cx-dark .cx-doc .hljs-built_in { color: #c4a1ff; }
+.cx-root.cx-dark .cx-doc .hljs-string, .cx-root.cx-dark .cx-doc .hljs-title, .cx-root.cx-dark .cx-doc .hljs-attr { color: #5fd3a2; }
+.cx-root.cx-dark .cx-doc .hljs-number, .cx-root.cx-dark .cx-doc .hljs-symbol, .cx-root.cx-dark .cx-doc .hljs-variable { color: #ffb067; }
+.cx-root.cx-dark .cx-doc .hljs-type, .cx-root.cx-dark .cx-doc .hljs-name { color: #7db6ff; }
+
+/* diagrams and charts */
+.cx-doc .cx-block {
+  position: relative; margin: 1.3em 0; border: 1px solid var(--cx-border); border-radius: 12px; padding: 16px;
+  background: var(--cx-bg); text-align: center; break-inside: avoid;
+}
+.cx-doc .cx-block-render svg { max-width: 100%; height: auto; }
+.cx-doc .cx-chart-holder { position: relative; height: 320px; width: 100%; }
+.cx-doc .cx-block .cx-error, .cx-preview .cx-error {
+  margin: 0; text-align: left; white-space: pre-wrap; font-family: var(--cx-mono-font); font-size: 0.8rem;
+  color: var(--cx-danger); background: transparent; border: 0; padding: 0;
+}
+.cx-doc .cx-block.cx-has-error { border-color: var(--cx-danger); }
+.cx-doc .cx-block-edit {
+  position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--cx-border);
+  background: var(--cx-bg); color: var(--cx-muted); cursor: pointer; opacity: 0; transition: opacity .15s; display: grid; place-items: center;
+}
+.cx-doc .cx-block-edit .material-icons { font-size: 18px; }
+.cx-doc .cx-block:hover .cx-block-edit, .cx-doc .cx-block-edit:focus-visible { opacity: 1; }
+.cx-doc .cx-block { cursor: pointer; }
+.cx-readonly .cx-doc .cx-block { cursor: default; }
+.cx-readonly .cx-doc .cx-block-edit { display: none; }
+.cx-doc .ProseMirror-selectednode.cx-block, .cx-doc .cx-block.ProseMirror-selectednode { outline: 2px solid var(--cx-accent); }
+
+/* comment highlights (decorations) */
+.cx-doc .cx-comment {
+  background: var(--cx-accent-soft); border-bottom: 2px solid var(--cx-accent); cursor: pointer; border-radius: 2px;
+  transition: background .15s;
+}
+.cx-doc .cx-comment:hover { background: var(--cx-accent-strong); }
+.cx-doc .cx-comment-resolved { background: transparent; border-bottom: 1px dashed var(--cx-muted); }
+.cx-doc .cx-comment-active { background: var(--cx-accent-strong); }
+
+/* diff */
+.cx-doc ins { background: var(--cx-add); text-decoration: none; border-radius: 3px; }
+.cx-doc del { background: var(--cx-del); text-decoration: line-through; border-radius: 3px; }
+
+@media print {
+  .cx-doc { font-size: 11pt; }
+  .cx-doc h1 { font-size: 22pt; }
+  .cx-doc h2 { font-size: 16pt; }
+  .cx-doc h3 { font-size: 13pt; }
+  .cx-doc h1, .cx-doc h2, .cx-doc h3, .cx-doc h4 { break-after: avoid; }
+  .cx-doc tr, .cx-doc pre, .cx-doc blockquote, .cx-doc .cx-block { break-inside: avoid; }
+  .cx-doc .cx-block-edit { display: none; }
+}

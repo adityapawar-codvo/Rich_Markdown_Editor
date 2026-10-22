@@ -1,0 +1,1 @@
+import{r as n}from"./chunks/blocks-BdiCeVFn.js";!async function(){const o=document.querySelector(".cx-doc");try{o&&await n(o,{theme:"light"}),document.fonts&&document.fonts.ready&&await document.fonts.ready}finally{window.__renderDone=!0}}();

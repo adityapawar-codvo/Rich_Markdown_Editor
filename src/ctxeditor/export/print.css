@@ -1,0 +1,19 @@
+/* Print layout for PDF export. Typography comes from document.css (shared with the editor). */
+html, body { margin: 0; padding: 0; background: #fff; }
+body.cx-print { color: #1f2430; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cx-print .cx-page { max-width: 760px; margin: 0 auto; padding: 0; }
+.cx-print .cx-draft-banner {
+  font-family: var(--cx-ui-font); font-weight: 700; letter-spacing: .12em; font-size: 10pt; color: #c62828;
+  border: 1.5px solid #c62828; border-radius: 6px; padding: 5px 12px; display: inline-block; margin-bottom: 14px;
+}
+.cx-print .cx-meta {
+  font-family: var(--cx-ui-font); font-size: 9pt; width: 100%; border-collapse: collapse; margin: 0 0 22px; border-radius: 8px;
+  border: 1px solid #e3e6ec; background: #f7f8fa;
+}
+.cx-print .cx-meta th { text-align: left; font-weight: 600; color: #6b7280; padding: 5px 12px; width: 18%; border: 0; background: none; }
+.cx-print .cx-meta td { padding: 5px 12px; border: 0; }
+.cx-print .cx-meta tr + tr th, .cx-print .cx-meta tr + tr td { border-top: 1px solid #e3e6ec; }
+.cx-print .cx-doc-title { font-family: var(--cx-ui-font); font-size: 24pt; font-weight: 650; letter-spacing: -0.02em; margin: 0 0 14px; line-height: 1.2; }
+.cx-print .cx-doc .cx-block { box-shadow: none; }
+.cx-print .cx-doc .cx-chart-holder { height: 300px; }
+@media print { .cx-print .cx-page { max-width: none; } }

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+*.db
+.env
+.nicegui/
+.DS_Store
+# The built editor bundle (src/ctxeditor/web/editor/dist) IS committed so `uv run` needs no Node.
+.gitignrore
